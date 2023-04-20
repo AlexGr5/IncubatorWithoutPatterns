@@ -1,34 +1,50 @@
 #pragma once
-#include "TemperatureSensorC0.h"
+#include "IComponentSensor.h"
 
 // Датчик Влажности
-class HumiditySensor
+class HumiditySensor : public IComponentSensor
 {
-private:
-	
-	// Средняя Влажность датчика
-	double AverageHumidity;
 
 public:
-	double GetHumidity();			// Получить влажность с датчика
+	HumiditySensor()
+	{
+		AverageHumidity = 50;
+	}
 
-	HumiditySensor();
-
-	HumiditySensor(double humidity);
+	HumiditySensor(double humidity)
+	{
+		AverageHumidity = humidity;
+	}
 
 	// Установить среднюю Владность датчика
-	void SetAverageHum(double humidity);
+	void SetAverageHum(double humidity)
+	{
+		AverageHumidity = humidity;
+	}
 
-	// Повысить влажность на 1 процент
-	void UpOneHimid();
-
-	// Понизить влажность на 1 процент
-	void DownOneHimid();
-
-protected:
+	// Получить влажность с датчика
+	double GetHumidity()
+	{
+		return(this->GenericHumidity(AverageHumidity - 2, AverageHumidity + 2)); // Эмитируем работу датчиков
+	}
 
 	// Сгенерировать влажность для имитации работы датчика
-	double GenericHumidity(double min, double max);
+	double GenericHumidity(double min, double max)
+	{
+		return (RandomNumbers::GetRandomInt(min, max));
+	}
+
+	// Повысить влажность на 1 процент
+	void UpOneHimid()
+	{
+		AverageHumidity += 1;
+	}
+
+	// Понизить влажность на 1 процент
+	void DownOneHimid()
+	{
+		AverageHumidity -= 1;
+	}
 
 };
 

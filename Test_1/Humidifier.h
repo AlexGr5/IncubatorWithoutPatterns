@@ -1,25 +1,59 @@
 #pragma once
+#include "HumiditySensor.h"
 #include "Heater.h"
 
 // Увлажнитель
-class Humidifier
+class Humidifier : public IComponentSensor
 {
-private:
+protected:
 	// Набор сенсоров влажности
-	vector <HumiditySensor>* HumidSensors;
+	vector <IComponentSensor>* HumidSensors;
 
 public:
 
-	Humidifier();
-
-	void AddSensor(HumiditySensor humidSensor);
+	Humidifier()
+	{
+		HumidSensors = new vector <IComponentSensor>();
+	}
 
 	// Задать сенсоры
-	void SetHimidSensors(vector <HumiditySensor>* humidSensors);
+	void SetHimidSensors(vector <IComponentSensor>* humidSensors)
+	{
+		HumidSensors = humidSensors;
+	}
+
+	IComponentSensor GetI(int i)
+	{
+		if (i > 0 && i < HumidSensors->size())
+			return HumidSensors->at(i);
+	}
+
+	// Вернуть размер списка сенсоров
+	int GetSize()
+	{
+		return HumidSensors->size();
+	}
+
+	void AddSensor(HumiditySensor humidSensor)
+	{
+		HumidSensors->push_back(humidSensor);
+	}
 
 	// Увеличить влажность всех датчиков на 1 процент
-	bool WarmUpOnePercent();
+	bool UpOneHimid()
+	{
+		for (int i = 0; i < HumidSensors->size(); i++)
+		{
+			HumidSensors->at(i).UpOneHimid();
 
-	vector <HumiditySensor>* GetSensors();
+			Sleep(2);
+		}
+		return(true);
+	}
+
+	vector <IComponentSensor>* GetSensors()
+	{
+		return HumidSensors;
+	}
 };
 

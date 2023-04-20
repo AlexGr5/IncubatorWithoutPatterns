@@ -1,5 +1,5 @@
 #pragma once
-#include "HumiditySensor.h"
+#include "Humidifier.h"
 
 
 // Датчики температуры и влажности
@@ -12,29 +12,135 @@ private:
 	vector <TemperatureSensorC0> *TemperSensors;
 
 	// Набор сенсоров влажности
-	vector <HumiditySensor>* HumidSensors;
+	Humidifier* HumidSensors;
 
 public:
 
-	Sensors();
+	Sensors()
+	{
+		TemperSensors = new vector <TemperatureSensorC0>();
+		HumidSensors = new Humidifier();
+	}
 
 	// Задать сенсоры
-	void SetHimidSensors(vector <HumiditySensor>* humidSensors);
+	void SetTempSensors(vector <TemperatureSensorC0>* temperSensors)
+	{
+		TemperSensors = temperSensors;
+	}
 
 	// Задать сенсоры
-	void SetTempSensors(vector <TemperatureSensorC0>* temperSensors);
+	void SetHimidSensors(Humidifier* humidSensors)
+	{
+		HumidSensors = humidSensors;
+	}
 
-	double MinTemperature();	// Поиск минимума температуры
-	double MaxTemperature();	// Поиск максимума температуры
-	void SortTemperature();		// Сортировка температур
+	// Поиск минимума температуры
+	double MinTemperature()
+	{
+		if (TemperSensors->size() > 0)
+		{
+			double minimum = TemperSensors->at(0).GetTemperatureC0();
+			for (int i = 0; i < TemperSensors->size(); i++)
+			{
+				if (TemperSensors->at(i).GetTemperatureC0() < minimum)
+					minimum = TemperSensors->at(i).GetTemperatureC0();
+			}
 
-	double MinHummidity();		// Поиск минимума влажности
-	double MaxHummidity();		// Поиск максимума влажности
-	void SortHumidity();		// Сортировка влажности
+			return(minimum);
+		}
+		else
+			return (-999);
+	}
+
+	// Поиск максимума температуры
+	double MaxTemperature()
+	{
+		if (TemperSensors->size() > 0)
+		{
+			double maximum = TemperSensors->at(0).GetTemperatureC0();
+			for (int i = 0; i < TemperSensors->size(); i++)
+			{
+				if (TemperSensors->at(i).GetTemperatureC0() > maximum)
+					maximum = TemperSensors->at(i).GetTemperatureC0();
+			}
+
+			return(maximum);
+		}
+		else
+			return (999);
+	}
+
+	// Сортировка температур
+	void SortTemperature()
+	{
+		;
+	}
+
+	// Поиск минимума влажности
+	double MinHummidity()
+	{
+		if (HumidSensors->GetSize() > 0)
+		{
+			double minimum = HumidSensors->GetI(0).GetHumidity();
+			for (int i = 0; i < HumidSensors->size(); i++)
+			{
+				if (HumidSensors->at(i).GetHumidity() < minimum)
+					minimum = HumidSensors->at(i).GetHumidity();
+			}
+
+			return(minimum);
+		}
+		else
+			return (-999);
+	}
+
+	// Поиск максимума влажности
+	double Sensors::MaxHummidity()
+	{
+		if (HumidSensors->size() > 0)
+		{
+			double maximum = HumidSensors->at(0).GetHumidity();
+			for (int i = 0; i < HumidSensors->size(); i++)
+			{
+				if (HumidSensors->at(i).GetHumidity() > maximum)
+					maximum = HumidSensors->at(i).GetHumidity();
+			}
+
+			return(maximum);
+		}
+		else
+			return (999);
+	}
+
+	// Сортировка влажности
+	void Sensors::SortHumidity()
+	{
+		;
+	}
+
+	// Эмитация потерь температур и влажности,
+	// которые происходят в настоящем инкубаторе
+	bool Sensors::Poteri()
+	{
+		for (int i = 0; i < HumidSensors->size(); i++)
+		{
+			for (int j = 0; j < 12; j++)
+				HumidSensors->at(i).DownOneHimid();
+
+			Sleep(10);
+		}
 
 
-	bool Poteri();				// Эмитация потерь температур и влажности,
-								// которые происходят в настоящем инкубаторе
+		for (int i = 0; i < TemperSensors->size(); i++)
+		{
+			for (int j = 0; j < 12; j++)
+				TemperSensors->at(i).DownZeroOneTemp();
+
+			Sleep(10);
+		}
+
+		return 0;
+	}
 
 };
 
