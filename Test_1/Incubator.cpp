@@ -143,6 +143,7 @@ bool Incubator::Incubation()
 						CurrentHumidifier->WarmUpOnePercent();
 					}
 					cout << "Увлажнение завершено!" << endl;
+
 					cout << endl;
 				}
 
