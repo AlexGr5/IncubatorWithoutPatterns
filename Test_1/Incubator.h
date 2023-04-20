@@ -18,6 +18,8 @@ private:
 
 	Sensors *CurrentSensors;
 
+	vector <HumiditySensor>* HumSens;
+
 public:
 
 	Incubator();
@@ -28,6 +30,16 @@ public:
 
 	void SetIncubator(EggType* eggType, Flipper* flipper,
 		Ventilation* ventilation, Humidifier* humidifier,
+		Heater* heater, Sensors* sensors);
+
+	void SetIncubator(EggType* eggType, Flipper* flipper,
+		Ventilation* ventilation, Humidifier* humidifier, 
+		vector <HumiditySensor>* humSens,
+		Heater* heater, Sensors* sensors);
+
+	Incubator(EggType* eggType, Flipper* flipper,
+		Ventilation* ventilation, Humidifier* humidifier,
+		vector <HumiditySensor>* humSens,
 		Heater* heater, Sensors* sensors);
 
 	// Инкубирование

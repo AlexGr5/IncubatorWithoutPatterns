@@ -23,6 +23,20 @@ Incubator::Incubator(EggType* eggType, Flipper* flipper,
 
 }
 
+Incubator::Incubator(EggType* eggType, Flipper* flipper,
+	Ventilation* ventilation, Humidifier* humidifier,
+	vector <HumiditySensor>* humSens,
+	Heater* heater, Sensors* sensors)
+{
+	CurrentEggType = eggType;
+	CurrentFlipper = flipper;
+	CurrentVentilation = ventilation;
+	CurrentHumidifier = humidifier;
+	CurrentHeater = heater;
+	HumSens = humSens;
+	CurrentSensors = sensors;
+}
+
 void Incubator::SetIncubator(EggType* eggType, Flipper* flipper,
 	Ventilation* ventilation, Humidifier* humidifier,
 	Heater* heater, Sensors* sensors)
@@ -35,6 +49,20 @@ void Incubator::SetIncubator(EggType* eggType, Flipper* flipper,
 	CurrentSensors = sensors;
 }
 
+
+void Incubator::SetIncubator(EggType* eggType, Flipper* flipper,
+	Ventilation* ventilation, Humidifier* humidifier,
+	vector <HumiditySensor>* humSens,
+	Heater* heater, Sensors* sensors)
+{
+	CurrentEggType = eggType;
+	CurrentFlipper = flipper;
+	CurrentVentilation = ventilation;
+	CurrentHumidifier = humidifier;
+	CurrentHeater = heater;
+	HumSens = humSens;
+	CurrentSensors = sensors;
+}
 
 std::wstring LargeIntToString(const LARGE_INTEGER& li)
 {
@@ -109,16 +137,16 @@ bool Incubator::Incubation()
 					cout << endl;
 				}
 
-				if (CurrentSensors->MinHummidity() < CurrentStage.get_MinHumidity())
+				if (CurrentHumidifier->MinHummidity() < CurrentStage.get_MinHumidity())
 				{
 					cout << endl;
-					cout << " Минимальная текущая Влажность = " << to_string(CurrentSensors->MinHummidity())
+					cout << " Минимальная текущая Влажность = " << to_string(CurrentHumidifier->MinHummidity())
 						<< " ниже допустимой = " << to_string(CurrentStage.get_MinHumidity()) << endl;
 
-					cout << "Происходит увлажнение..." << endl;
-					while (CurrentSensors->MaxHummidity() < CurrentStage.get_MaxHumidity())
+					cout << "Происходит увлажнение... <Comosite> " << endl;
+					while (CurrentHumidifier->MaxHummidity() < CurrentStage.get_MaxHumidity())
 					{
-						CurrentHumidifier->WarmUpOnePercent();
+						CurrentHumidifier->UpOneHimid();
 					}
 					cout << "Увлажнение завершёно!" << endl;
 					cout << endl;

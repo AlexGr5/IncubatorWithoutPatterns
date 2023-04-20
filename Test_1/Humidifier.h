@@ -55,5 +55,43 @@ public:
 	{
 		return HumidSensors;
 	}
+
+
+
+	// Поиск минимума влажности
+	double MinHummidity()
+	{
+		if (HumidSensors->size() > 0)
+		{
+			double minimum = HumidSensors->at(0).GetValue();
+			for (int i = 0; i < HumidSensors->size(); i++)
+			{
+				if (HumidSensors->at(i).GetValue() < minimum)
+					minimum = HumidSensors->at(i).GetValue();
+			}
+
+			return(minimum);
+		}
+		else
+			return (-999);
+	}
+
+	// Поиск максимума влажности
+	double MaxHummidity()
+	{
+		if (HumidSensors->size() > 0)
+		{
+			double maximum = HumidSensors->at(0).GetValue();
+			for (int i = 0; i < HumidSensors->size(); i++)
+			{
+				if (HumidSensors->at(i).GetValue() > maximum)
+					maximum = HumidSensors->at(i).GetValue();
+			}
+
+			return(maximum);
+		}
+		else
+			return (999);
+	}
 };
 

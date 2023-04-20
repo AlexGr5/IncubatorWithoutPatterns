@@ -40,7 +40,15 @@ int main()
     Flipper* F1 = new Flipper();
 
     Sensors* S1 = new Sensors();
-    S1->SetHimidSensors(Humidefier1->GetSensors());
+
+    //vector <HumiditySensor>* SensorsHumid;
+    //SensorsHumid->push_back(H1);
+    //SensorsHumid->push_back(H2);
+    //SensorsHumid->push_back(H3);
+    //SensorsHumid->push_back(H4);
+    //SensorsHumid->push_back(H5);
+
+    //S1->SetHimidSensors(Humidefier1->GetSensors());
     S1->SetTempSensors(Heater1->GetSensors());
 
     Stage St1;
