@@ -7,20 +7,39 @@ class Heater
 
 private:
 	// Набор сенсоров температуры
-	vector <TemperatureSensorC0>* TemperSensors;
+	//vector <TemperatureSensorC0>* TemperSensors;
+
+	typedef aggregate<TemperatureSensorC0> myContainer;
+	myContainer  *data;
 
 public:
 
-	Heater();
+	Heater()
+	{
+		data = new myContainer();
+	}
 
-	void AddSensor(TemperatureSensorC0 tempSensor);
-
-	// Задать сенсоры
-	void SetTempSensors(vector <TemperatureSensorC0>* temperSensors);
+	void AddSensor(TemperatureSensorC0 tempSensor)
+	{
+		data->push(tempSensor);
+	}
 
 	// Нагреть все датчики на 0.1 градус
-	bool WarmUpZeroOneDegreeC0();
+	bool WarmUpZeroOneDegreeC0()
+	{
 
-	vector <TemperatureSensorC0>* GetSensors();
+		for (myContainer::myIterator it = data->begin(); it != data->end(); ++it) {
+			it.next()->UpZeroOneTemp();
+			
+			Sleep(2);
+		}
+		
+		return(true);
+	}
+
+	myContainer* GetConteiner()
+	{
+		return data;
+	}
 };
 

@@ -41,7 +41,8 @@ int main()
 
     Sensors* S1 = new Sensors();
     S1->SetHimidSensors(Humidefier1->GetSensors());
-    S1->SetTempSensors(Heater1->GetSensors());
+    S1->SetConteiner(Heater1->GetConteiner());
+
 
     Stage St1;
     Stage St2;

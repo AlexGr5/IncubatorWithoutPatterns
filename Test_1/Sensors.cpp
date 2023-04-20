@@ -2,14 +2,15 @@
 
 Sensors::Sensors()
 {
-	TemperSensors = new vector <TemperatureSensorC0>();
+	//TemperSensors = new vector <TemperatureSensorC0>();
 	HumidSensors = new vector <HumiditySensor>();
+	data = new myContainer();
 }
 
 // Задать сенсоры
 void Sensors::SetTempSensors(vector <TemperatureSensorC0>* temperSensors)
 {
-	TemperSensors = temperSensors;
+	//TemperSensors = temperSensors;
 }
 
 // Задать сенсоры
@@ -21,37 +22,32 @@ void Sensors::SetHimidSensors(vector <HumiditySensor>* humidSensors)
 // Поиск минимума температуры
 double Sensors::MinTemperature()
 {
-	if (TemperSensors->size() > 0)
+	double minimum = data->begin().next()->GetTemperatureC0();
+	myContainer::myIterator it = data->begin();
+	for (; it != data->end(); ++it)
 	{
-		double minimum = TemperSensors->at(0).GetTemperatureC0();
-			for (int i = 0; i < TemperSensors->size(); i++)
-			{
-				if (TemperSensors->at(i).GetTemperatureC0() < minimum)
-					minimum = TemperSensors->at(i).GetTemperatureC0();
-			}
-
-		return(minimum);
+		double temp = it.next()->GetTemperatureC0();
+		if (temp < minimum)
+			minimum = temp;
 	}
-	else
-		return (-999);
+
+	return(minimum);
 }
 
 // Поиск максимума температуры
 double Sensors::MaxTemperature()
 {
-	if (TemperSensors->size() > 0)
+	
+	double maximum = data->begin().next()->GetTemperatureC0();
+	myContainer::myIterator it = data->begin();
+	for (; it != data->end(); ++it)
 	{
-		double maximum = TemperSensors->at(0).GetTemperatureC0();
-		for (int i = 0; i < TemperSensors->size(); i++)
-		{
-			if (TemperSensors->at(i).GetTemperatureC0() > maximum)
-				maximum = TemperSensors->at(i).GetTemperatureC0();
-		}
-
-		return(maximum);
+		double temp = it.next()->GetTemperatureC0();
+		if (temp > maximum)
+			maximum = temp;
 	}
-	else
-		return (999);
+
+	return(maximum);
 }
 
 // Сортировка температур
@@ -115,10 +111,9 @@ bool Sensors::Poteri()
 	}
 	
 
-	for (int i = 0; i < TemperSensors->size(); i++)
-	{
+	for (myContainer::myIterator it = data->begin(); it != data->end(); ++it) {
 		for (int j = 0; j < 12; j++)
-			TemperSensors->at(i).DownZeroOneTemp();
+			it.next()->DownZeroOneTemp();
 
 		Sleep(10);
 	}

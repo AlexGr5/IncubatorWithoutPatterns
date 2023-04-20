@@ -148,6 +148,7 @@
     <ClCompile Include="InterfaceEggType.cpp" />
     <ClCompile Include="InterfaceIncubator.cpp" />
     <ClCompile Include="InterfaceStage.cpp" />
+    <ClCompile Include="Iterator.cpp" />
     <ClCompile Include="RandomNumbers.cpp" />
     <ClCompile Include="Sensors.cpp" />
     <ClCompile Include="Stage.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="InterfaceEggType.h" />
     <ClInclude Include="InterfaceIncubator.h" />
     <ClInclude Include="InterfaceStage.h" />
+    <ClInclude Include="Iterator.h" />
     <ClInclude Include="RandomNumbers.h" />
     <ClInclude Include="Sensors.h" />
     <ClInclude Include="Stage.h" />

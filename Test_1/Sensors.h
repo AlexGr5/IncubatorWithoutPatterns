@@ -9,7 +9,8 @@ class Sensors
 private:
 
 	// Набор сенсоров температуры
-	vector <TemperatureSensorC0> *TemperSensors;
+	typedef aggregate<TemperatureSensorC0> myContainer;
+	myContainer* data;
 
 	// Набор сенсоров влажности
 	vector <HumiditySensor>* HumidSensors;
@@ -36,5 +37,15 @@ public:
 	bool Poteri();				// Эмитация потерь температур и влажности,
 								// которые происходят в настоящем инкубаторе
 
+
+	void AddTempSensor(TemperatureSensorC0 tempSensor)
+	{
+		data->push(tempSensor);
+	}
+
+	void SetConteiner(myContainer* cont)
+	{
+		data = cont;
+	}
 };
 
