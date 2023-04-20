@@ -144,15 +144,19 @@
     <ClCompile Include="Heater.cpp" />
     <ClCompile Include="Humidifier.cpp" />
     <ClCompile Include="HumiditySensor.cpp" />
+    <ClCompile Include="IFlipper.cpp" />
     <ClCompile Include="Incubator.cpp" />
     <ClCompile Include="InterfaceEggType.cpp" />
     <ClCompile Include="InterfaceIncubator.cpp" />
     <ClCompile Include="InterfaceStage.cpp" />
     <ClCompile Include="RandomNumbers.cpp" />
+    <ClCompile Include="RefinemenetElement.cpp" />
     <ClCompile Include="Sensors.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TemperatureSensorC0.cpp" />
     <ClCompile Include="Test_1.cpp" />
+    <ClCompile Include="Turner45.cpp" />
+    <ClCompile Include="Turner90.cpp" />
     <ClCompile Include="Ventilation.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,14 +165,18 @@
     <ClInclude Include="Heater.h" />
     <ClInclude Include="Humidifier.h" />
     <ClInclude Include="HumiditySensor.h" />
+    <ClInclude Include="IFlipper.h" />
     <ClInclude Include="Incubator.h" />
     <ClInclude Include="InterfaceEggType.h" />
     <ClInclude Include="InterfaceIncubator.h" />
     <ClInclude Include="InterfaceStage.h" />
     <ClInclude Include="RandomNumbers.h" />
+    <ClInclude Include="RefinemenetElement.h" />
     <ClInclude Include="Sensors.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="TemperatureSensorC0.h" />
+    <ClInclude Include="Turner45.h" />
+    <ClInclude Include="Turner90.h" />
     <ClInclude Include="Ventilation.h" />
   </ItemGroup>
   <ItemGroup>

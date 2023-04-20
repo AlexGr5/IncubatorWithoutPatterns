@@ -10,6 +10,8 @@ private:
 
 	//=====================
 
+	Turner45* CurrentTurner45;
+	Turner90* CurrentTurner90;
 	Flipper *CurrentFlipper;
 	Ventilation *CurrentVentilation;
 
@@ -22,11 +24,11 @@ public:
 
 	Incubator();
 
-	Incubator(EggType* eggType, Flipper* flipper, 
+	Incubator(EggType* eggType, Turner45* turner45,
 		Ventilation* ventilation, Humidifier* humidifier,
 		Heater* heater, Sensors* sensors);
 
-	void SetIncubator(EggType* eggType, Flipper* flipper,
+	void SetIncubator(EggType* eggType, Turner45* turner45,
 		Ventilation* ventilation, Humidifier* humidifier,
 		Heater* heater, Sensors* sensors);
 
@@ -35,6 +37,7 @@ public:
 
 	void SetEggType(EggType* eggType);
 
+	void SetFlipper(Turner45* turner45);
 	void SetFlipper(Flipper* flipper);
 	void SetVentilation(Ventilation* ventilation);
 	void SetHumidifier(Humidifier* humidifier);

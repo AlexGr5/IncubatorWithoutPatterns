@@ -3,19 +3,32 @@
 Incubator::Incubator()
 {
 	CurrentEggType = new EggType();
-	CurrentFlipper = new Flipper();
+
+	// Декоратор
+	CurrentTurner45 = new Turner45();
+	CurrentFlipper = new Flipper(CurrentTurner45);
+	CurrentTurner90 = new Turner90(CurrentTurner45);
+	// =========
+
 	CurrentVentilation = new Ventilation();
 	CurrentHumidifier = new Humidifier();
 	CurrentHeater = new Heater();
 	CurrentSensors = new Sensors();
 }
 
-Incubator::Incubator(EggType* eggType, Flipper* flipper,
+Incubator::Incubator(EggType* eggType, Turner45* turner45,
 	Ventilation* ventilation, Humidifier* humidifier,
 	Heater* heater, Sensors* sensors)
 {
 	CurrentEggType = eggType;
-	CurrentFlipper = flipper;
+	//CurrentFlipper = flipper;
+	
+	// Декоратор
+	CurrentTurner45 = turner45;
+	CurrentFlipper = new Flipper(CurrentTurner45);
+	CurrentTurner90 = new Turner90(CurrentTurner45);
+	// =========
+
 	CurrentVentilation = ventilation;
 	CurrentHumidifier = humidifier;
 	CurrentHeater = heater;
@@ -23,12 +36,19 @@ Incubator::Incubator(EggType* eggType, Flipper* flipper,
 
 }
 
-void Incubator::SetIncubator(EggType* eggType, Flipper* flipper,
+void Incubator::SetIncubator(EggType* eggType, Turner45* turner45,
 	Ventilation* ventilation, Humidifier* humidifier,
 	Heater* heater, Sensors* sensors)
 {
 	CurrentEggType = eggType;
-	CurrentFlipper = flipper;
+	//CurrentFlipper = flipper;
+
+	// Декоратор
+	CurrentTurner45 = turner45;
+	CurrentFlipper = new Flipper(CurrentTurner45);
+	CurrentTurner90 = new Turner90(CurrentTurner45);
+	// =========
+
 	CurrentVentilation = ventilation;
 	CurrentHumidifier = humidifier;
 	CurrentHeater = heater;
@@ -91,6 +111,8 @@ bool Incubator::Incubation()
 			double timeToFlips = GetTickCount();
 			double timeToVentilations = GetTickCount();
 
+			int countRepead = 0;
+
 			cout << "==========================================================================" << endl;
 			while (CurrentStage.get_TimeStageOfMilliSec() >= (CurrentTime - TimeStart))
 			{
@@ -120,7 +142,7 @@ bool Incubator::Incubation()
 					{
 						CurrentHumidifier->WarmUpOnePercent();
 					}
-					cout << "Увлажнение завершёно!" << endl;
+					cout << "Увлажнение завершено!" << endl;
 					cout << endl;
 				}
 
@@ -143,7 +165,17 @@ bool Incubator::Incubation()
 					cout << endl;
 					timeToFlips = CurrentTime;
 					cout << "Пора перевернуть яйца!" << endl;
-					CurrentFlipper->FlipperOn();
+					
+					// DECORATOR
+					if (countRepead <= 1)
+						CurrentTurner45->FlipperOn();
+					else
+						if (countRepead <= 3)
+							CurrentFlipper->FlipperOn();
+						else
+							CurrentTurner90->FlipperOn();
+					// =========
+
 					cout << "Яйца перевернуты!" << endl;
 					cout << endl;
 				}
@@ -157,6 +189,8 @@ bool Incubator::Incubation()
 
 				//CurrentTime = omp_get_wtime();
 				CurrentTime = GetTickCount();
+
+				countRepead++;
 			}
 			cout << "==========================================================================" << endl;
 			cout << endl;

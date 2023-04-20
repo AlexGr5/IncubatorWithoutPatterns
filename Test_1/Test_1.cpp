@@ -37,7 +37,7 @@ int main()
     Humidefier1->AddSensor(H5);
 
     Ventilation* V1 = new Ventilation();
-    Flipper* F1 = new Flipper();
+    //Flipper* F1 = new Flipper();
 
     Sensors* S1 = new Sensors();
     S1->SetHimidSensors(Humidefier1->GetSensors());
@@ -54,7 +54,9 @@ int main()
 
     Incubator Incub1;
 
-    Incub1.SetIncubator(EgT1, F1, V1, Humidefier1, Heater1, S1);
+    Turner45* turner45 = new Turner45();
+
+    Incub1.SetIncubator(EgT1, turner45, V1, Humidefier1, Heater1, S1);
 
     Incub1.Incubation();
 }
