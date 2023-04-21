@@ -11,12 +11,12 @@ public:
 	// ѕеревернуть €йца
 	bool FlipperOn()
 	{
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 		iFlipperDecorator->FlipperOn();
-		iFlipperDecorator->FlipperOn();
-		iFlipperDecorator->FlipperOn();
-		iFlipperDecorator->FlipperOn();
-		cout << "_______________________________" << endl;
-		cout << "яйца успешно ѕеревернуты (180)!" << endl;
+		cout << " + дополнительно наклон на 135 градусов" << endl;
+		cout << "»того:__________________________________" << endl;
+		cout << "яйца успешно ѕеревернуты (наклон на180)!" << endl;
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 
 		return(true);
 	}
