@@ -23,6 +23,9 @@
 #include <sstream>		// Для перевода LARGE_INTEGER в
 #include <iomanip>		// string
 
+#include <map>
+#include <random>
+
 // Макроподстановка для объявления полей класса
 #define DEF(type, var)  private: type var; \
 	public: type get_##var() const { return var; } \

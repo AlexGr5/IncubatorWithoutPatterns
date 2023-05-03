@@ -1,5 +1,5 @@
 #pragma once
-#include "TemperatureSensorC0.h"
+#include "SensorFlyweight.h"
 
 // Датчик Влажности
 class HumiditySensor

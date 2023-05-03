@@ -149,6 +149,7 @@
     <ClCompile Include="InterfaceIncubator.cpp" />
     <ClCompile Include="InterfaceStage.cpp" />
     <ClCompile Include="RandomNumbers.cpp" />
+    <ClCompile Include="SensorFlyweight.cpp" />
     <ClCompile Include="Sensors.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TemperatureSensorC0.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="InterfaceIncubator.h" />
     <ClInclude Include="InterfaceStage.h" />
     <ClInclude Include="RandomNumbers.h" />
+    <ClInclude Include="SensorFlyweight.h" />
     <ClInclude Include="Sensors.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="TemperatureSensorC0.h" />

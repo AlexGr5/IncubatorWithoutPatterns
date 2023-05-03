@@ -5,6 +5,11 @@
 
 #include "Incubator.h"
 
+//const uint_fast8_t tempSensorsSize = 8;
+//default_random_engine generator;
+//uniform_int_distribution<int> distribution(0, tempSensorsSize);
+
+
 int main()
 {
     system("chcp 1251");
@@ -39,9 +44,7 @@ int main()
     Ventilation* V1 = new Ventilation();
     Flipper* F1 = new Flipper();
 
-    Sensors* S1 = new Sensors();
-    S1->SetHimidSensors(Humidefier1->GetSensors());
-    S1->SetTempSensors(Heater1->GetSensors());
+
 
     Stage St1;
     Stage St2;
@@ -51,6 +54,22 @@ int main()
     EggType* EgT1 = new EggType("Куриные");
     EgT1->AppendStage(St1);
     EgT1->AppendStage(St2);
+
+    //==================================================
+    Factory* fact = new Factory();
+    for (uint_fast8_t i = 0; i < 8; i++) {
+        fact->getSensor(i)->SetAverageTemp(32 + i);
+    }
+
+    Heater* heaterFact = new Heater();
+    heaterFact->SetFactory(fact, 8);
+
+    Sensors* S1 = new Sensors();
+    S1->SetHimidSensors(Humidefier1->GetSensors());
+    S1->SetFact(fact, 8);
+    //==================================================
+
+    //S1->SetTempSensors(Heater1->GetSensors());
 
     Incubator Incub1;
 

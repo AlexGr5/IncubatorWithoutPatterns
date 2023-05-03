@@ -14,12 +14,18 @@ private:
 	// Набор сенсоров влажности
 	vector <HumiditySensor>* HumidSensors;
 
+	Factory* fact;
+	int Size = 0;
+
 public:
 
 	Sensors();
 
 	// Задать сенсоры
 	void SetHimidSensors(vector <HumiditySensor>* humidSensors);
+
+	// Задать сенсоры
+	void SetFact(Factory* fact1, int size) { fact = fact1; Size = size; }
 
 	// Задать сенсоры
 	void SetTempSensors(vector <TemperatureSensorC0>* temperSensors);

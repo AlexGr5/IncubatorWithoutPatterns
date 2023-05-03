@@ -4,6 +4,8 @@ Sensors::Sensors()
 {
 	TemperSensors = new vector <TemperatureSensorC0>();
 	HumidSensors = new vector <HumiditySensor>();
+	fact = new Factory();
+	Size = 0;
 }
 
 // Задать сенсоры
@@ -21,14 +23,14 @@ void Sensors::SetHimidSensors(vector <HumiditySensor>* humidSensors)
 // Поиск минимума температуры
 double Sensors::MinTemperature()
 {
-	if (TemperSensors->size() > 0)
+	if (Size > 0)
 	{
-		double minimum = TemperSensors->at(0).GetTemperatureC0();
-			for (int i = 0; i < TemperSensors->size(); i++)
-			{
-				if (TemperSensors->at(i).GetTemperatureC0() < minimum)
-					minimum = TemperSensors->at(i).GetTemperatureC0();
-			}
+		double minimum = fact->getSensor(0)->GetTemperature();
+		for (int i = 0; i < Size; i++)
+		{
+			if (fact->getSensor(i)->GetTemperature() < minimum)
+				minimum = fact->getSensor(i)->GetTemperature();
+		}
 
 		return(minimum);
 	}
@@ -41,11 +43,11 @@ double Sensors::MaxTemperature()
 {
 	if (TemperSensors->size() > 0)
 	{
-		double maximum = TemperSensors->at(0).GetTemperatureC0();
+		double maximum = fact->getSensor(0)->GetTemperature();
 		for (int i = 0; i < TemperSensors->size(); i++)
 		{
-			if (TemperSensors->at(i).GetTemperatureC0() > maximum)
-				maximum = TemperSensors->at(i).GetTemperatureC0();
+			if (fact->getSensor(i)->GetTemperature() > maximum)
+				maximum = fact->getSensor(i)->GetTemperature();
 		}
 
 		return(maximum);
@@ -115,10 +117,10 @@ bool Sensors::Poteri()
 	}
 	
 
-	for (int i = 0; i < TemperSensors->size(); i++)
+	for (int i = 0; i < Size; i++)
 	{
 		for (int j = 0; j < 12; j++)
-			TemperSensors->at(i).DownZeroOneTemp();
+			fact->getSensor(i)->DownZeroOneTemp();
 
 		Sleep(10);
 	}
