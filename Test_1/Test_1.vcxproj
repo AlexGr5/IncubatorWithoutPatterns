@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="EggType.cpp" />
+    <ClCompile Include="Facade.cpp" />
     <ClCompile Include="Flipper.cpp" />
     <ClCompile Include="Heater.cpp" />
     <ClCompile Include="Humidifier.cpp" />
@@ -157,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EggType.h" />
+    <ClInclude Include="Facade.h" />
     <ClInclude Include="Flipper.h" />
     <ClInclude Include="Heater.h" />
     <ClInclude Include="Humidifier.h" />

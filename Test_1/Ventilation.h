@@ -1,13 +1,14 @@
 #pragma once
-#include "Humidifier.h"
+//#include "Humidifier.h"
+#include "Facade.h"
 
 // Вентиляция инкубатора
-class Ventilation
+class Ventilation : public Facade
 {
 public:
 	Ventilation();
 
 	// Проветрить
-	bool VentilationOn();
+	virtual bool PerfomAction();
 };
 

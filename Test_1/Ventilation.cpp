@@ -6,7 +6,7 @@ Ventilation::Ventilation()
 }
 
 // Проветрить
-bool Ventilation::VentilationOn()
+bool Ventilation::PerfomAction()
 {
 	//cout << "Успешно проветрено!" << endl;
 	Sleep(10);

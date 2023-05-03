@@ -6,7 +6,8 @@ class Flipper
 
 public:
 	// ѕеревернуть €йца
-	bool FlipperOn();
+	virtual bool PerfomAction();
 
+	Flipper() { ; }
 };
 

@@ -131,7 +131,7 @@ bool Incubator::Incubation()
 					cout << endl;
 					timeToVentilations = CurrentTime;
 					cout << "Пора провентилировать!" << endl;
-					CurrentVentilation->VentilationOn();
+					CurrentVentilation->PerfomAction();
 					cout << "Вентиляция закончена!" << endl;
 					cout << endl;
 				}
@@ -143,7 +143,7 @@ bool Incubator::Incubation()
 					cout << endl;
 					timeToFlips = CurrentTime;
 					cout << "Пора перевернуть яйца!" << endl;
-					CurrentFlipper->FlipperOn();
+					CurrentFlipper->PerfomAction();
 					cout << "Яйца перевернуты!" << endl;
 					cout << endl;
 				}
