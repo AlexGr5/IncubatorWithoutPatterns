@@ -60,6 +60,9 @@
     <ClCompile Include="InterfaceStage.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="CountTimeUpTemp.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TemperatureSensorC0.h">
@@ -102,6 +105,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="InterfaceStage.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="CountTimeUpTemp.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

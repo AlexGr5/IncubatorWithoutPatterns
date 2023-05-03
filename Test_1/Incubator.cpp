@@ -51,6 +51,8 @@ bool Incubator::Incubation()
 
 	Stage CurrentStage = Stage();
 
+	CountTimeUpTemp* CountTime1 = new CountTimeUpTemp(CurrentSensors);
+
 	if (Stages.size() > 0)
 	{
 
@@ -99,6 +101,13 @@ bool Incubator::Incubation()
 					cout << endl;
 					cout << " Минимальная текущая температура = " << to_string(CurrentSensors->MinTemperature()) 
 						<< " ниже допустимой = " << to_string(CurrentStage.get_MinTemerature()) << endl;
+
+					//================================================================================
+					int time1 = CountTime1->CountTime(CurrentStage.get_MinTemerature());
+					cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+					cout << "ПРИМЕРНОЕ ВРЕМЯ НАГРЕВА = " << time1 << " МИНУТ(Ы)" << endl;
+					cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+					//================================================================================
 
 					cout << "Происходит нагрев..." << endl;
 					while (CurrentSensors->MaxTemperature() < CurrentStage.get_MaxTemerature())

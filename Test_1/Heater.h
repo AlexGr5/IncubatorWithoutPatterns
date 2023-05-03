@@ -1,5 +1,5 @@
 #pragma once
-#include "Sensors.h"
+#include "CountTimeUpTemp.h"
 
 // Нагреватель
 class Heater
