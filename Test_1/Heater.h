@@ -1,8 +1,9 @@
 #pragma once
-#include "Sensors.h"
+//#include "Sensors.h"
+#include "ImplementBooster.h"
 
 // Нагреватель
-class Heater
+class Heater : public ImplementBooster
 {
 
 private:
@@ -19,7 +20,7 @@ public:
 	void SetTempSensors(vector <TemperatureSensorC0>* temperSensors);
 
 	// Нагреть все датчики на 0.1 градус
-	bool WarmUpZeroOneDegreeC0();
+	bool UpOnePercent();
 
 	vector <TemperatureSensorC0>* GetSensors();
 };

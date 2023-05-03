@@ -144,6 +144,7 @@
     <ClCompile Include="Heater.cpp" />
     <ClCompile Include="Humidifier.cpp" />
     <ClCompile Include="HumiditySensor.cpp" />
+    <ClCompile Include="ImplementBooster.cpp" />
     <ClCompile Include="Incubator.cpp" />
     <ClCompile Include="InterfaceEggType.cpp" />
     <ClCompile Include="InterfaceIncubator.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Heater.h" />
     <ClInclude Include="Humidifier.h" />
     <ClInclude Include="HumiditySensor.h" />
+    <ClInclude Include="ImplementBooster.h" />
     <ClInclude Include="Incubator.h" />
     <ClInclude Include="InterfaceEggType.h" />
     <ClInclude Include="InterfaceIncubator.h" />

@@ -17,7 +17,7 @@ void Humidifier::AddSensor(HumiditySensor humidSensor)
 }
 
 // Увеличить влажность всех датчиков на 1 процент
-bool Humidifier::WarmUpOnePercent()
+bool Humidifier::UpOnePercent()
 {
 	for (int i = 0; i < HumidSensors->size(); i++)
 	{

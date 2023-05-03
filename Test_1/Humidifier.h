@@ -2,7 +2,7 @@
 #include "Heater.h"
 
 // Увлажнитель
-class Humidifier
+class Humidifier : public ImplementBooster
 {
 private:
 	// Набор сенсоров влажности
@@ -18,7 +18,7 @@ public:
 	void SetHimidSensors(vector <HumiditySensor>* humidSensors);
 
 	// Увеличить влажность всех датчиков на 1 процент
-	bool WarmUpOnePercent();
+	bool UpOnePercent();
 
 	vector <HumiditySensor>* GetSensors();
 };

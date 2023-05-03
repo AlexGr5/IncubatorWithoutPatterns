@@ -22,6 +22,7 @@ int main()
     HumiditySensor H4(34);
     HumiditySensor H5(32);
 
+    // =====================================================================
     Heater* Heater1 = new Heater();
     Heater1->AddSensor(T1);
     Heater1->AddSensor(T2);
@@ -35,6 +36,11 @@ int main()
     Humidefier1->AddSensor(H3);
     Humidefier1->AddSensor(H4);
     Humidefier1->AddSensor(H5);
+
+    BoosterHumidity* BoostHum = new BoosterHumidity(Humidefier1);
+    BoosterTemperature* BoostTemp = new BoosterTemperature(Heater1);
+    // =====================================================================
+
 
     Ventilation* V1 = new Ventilation();
     Flipper* F1 = new Flipper();
@@ -54,7 +60,9 @@ int main()
 
     Incubator Incub1;
 
-    Incub1.SetIncubator(EgT1, F1, V1, Humidefier1, Heater1, S1);
+    Incub1.SetIncubator(EgT1, F1, V1, BoostHum, BoostTemp, S1);
+
+    //Incub1.SetIncubator(EgT1, F1, V1, Humidefier1, Heater1, S1);
 
     Incub1.Incubation();
 }

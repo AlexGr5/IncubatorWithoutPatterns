@@ -103,7 +103,7 @@ bool Incubator::Incubation()
 					cout << "Происходит нагрев..." << endl;
 					while (CurrentSensors->MaxTemperature() < CurrentStage.get_MaxTemerature())
 					{
-						CurrentHeater->WarmUpZeroOneDegreeC0();
+						CurrentBosterTemp->UpOnePercent();
 					}
 					cout << "Нагрев завершён!" << endl;
 					cout << endl;
@@ -118,7 +118,7 @@ bool Incubator::Incubation()
 					cout << "Происходит увлажнение..." << endl;
 					while (CurrentSensors->MaxHummidity() < CurrentStage.get_MaxHumidity())
 					{
-						CurrentHumidifier->WarmUpOnePercent();
+						CurrentBoosterHum->UpOnePercent();
 					}
 					cout << "Увлажнение завершёно!" << endl;
 					cout << endl;

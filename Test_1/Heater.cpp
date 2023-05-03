@@ -17,7 +17,7 @@ void Heater::AddSensor(TemperatureSensorC0 tempSensor)
 }
 
 // Нагреть все датчики на 0.1 градус
-bool Heater::WarmUpZeroOneDegreeC0()
+bool Heater::UpOnePercent()
 {
 	for (int i = 0; i < TemperSensors->size(); i++)
 	{
