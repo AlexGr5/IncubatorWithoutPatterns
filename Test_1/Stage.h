@@ -13,7 +13,15 @@ public:
 		double minTemerature, double maxTemerature,
 		double minHumidity, double maxHumidity);
 
+	void DisplayType() 
+	{ 
+		cout << " Now type is " << TypeOfStage << endl;
+	}
+
 private:
+
+	// Веремменной промежуток в милисекунда
+	DEF(string, TypeOfStage);
 
 	// Веремменной промежуток в милисекунда
 	DEF(double, TimeStageOfMilliSec);
