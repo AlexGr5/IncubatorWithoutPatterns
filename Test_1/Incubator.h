@@ -10,13 +10,16 @@ private:
 
 	//=====================
 
-	Flipper *CurrentFlipper;
-	Ventilation *CurrentVentilation;
+	//Flipper *CurrentFlipper;
+	//Ventilation *CurrentVentilation;
 
 	Humidifier* CurrentHumidifier;
 	Heater* CurrentHeater;
 
 	Sensors *CurrentSensors;
+
+	Device* CurrentFlipper;
+	Device* CurrentVentilation;
 
 public:
 
@@ -29,6 +32,18 @@ public:
 	void SetIncubator(EggType* eggType, Flipper* flipper,
 		Ventilation* ventilation, Humidifier* humidifier,
 		Heater* heater, Sensors* sensors);
+
+	void SetIncubator(EggType* eggType, Device* flipper,
+		Device* ventilation, Humidifier* humidifier,
+		Heater* heater, Sensors* sensors)
+	{
+		CurrentEggType = eggType;
+		CurrentFlipper = flipper;
+		CurrentVentilation = ventilation;
+		CurrentHumidifier = humidifier;
+		CurrentHeater = heater;
+		CurrentSensors = sensors;
+	}
 
 	// Инкубирование
 	bool Incubation();

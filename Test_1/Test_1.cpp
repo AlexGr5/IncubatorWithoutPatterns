@@ -36,8 +36,14 @@ int main()
     Humidefier1->AddSensor(H4);
     Humidefier1->AddSensor(H5);
 
-    Ventilation* V1 = new Ventilation();
-    Flipper* F1 = new Flipper();
+    //Ventilation* V1 = new Ventilation();
+    //Flipper* F1 = new Flipper();
+
+    FctoryMethod* fmFlipper = new FlipObject();
+    Device* FlipperDevice = fmFlipper->CreateDevice();
+    FctoryMethod* fmVentel = new VentelObject();
+    Device* VentelDevice = fmVentel->CreateDevice();
+
 
     Sensors* S1 = new Sensors();
     S1->SetHimidSensors(Humidefier1->GetSensors());
@@ -54,7 +60,7 @@ int main()
 
     Incubator Incub1;
 
-    Incub1.SetIncubator(EgT1, F1, V1, Humidefier1, Heater1, S1);
+    Incub1.SetIncubator(EgT1, FlipperDevice, VentelDevice, Humidefier1, Heater1, S1);
 
     Incub1.Incubation();
 }
