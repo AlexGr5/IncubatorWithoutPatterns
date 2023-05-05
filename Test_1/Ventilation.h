@@ -1,13 +1,6 @@
 #pragma once
-#include "Humidifier.h"
+//#include "Humidifier.h"
+#include "DevicePrototype.h"
 
-// Вентиляция инкубатора
-class Ventilation
-{
-public:
-	Ventilation();
 
-	// Проветрить
-	bool VentilationOn();
-};
 

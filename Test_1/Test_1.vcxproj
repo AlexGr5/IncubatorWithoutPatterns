@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DevicePrototype.cpp" />
     <ClCompile Include="EggType.cpp" />
     <ClCompile Include="Flipper.cpp" />
     <ClCompile Include="Heater.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="Ventilation.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DevicePrototype.h" />
     <ClInclude Include="EggType.h" />
     <ClInclude Include="Flipper.h" />
     <ClInclude Include="Heater.h" />
