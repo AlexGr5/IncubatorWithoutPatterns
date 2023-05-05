@@ -60,7 +60,6 @@ bool Incubator::Incubation()
 
 		cout << "Тип инкубируемых яиц: " << CurrentEggType->GetName() << endl;
 		cout << "--------------------------------------------" << endl;
-		cout << endl;
 
 		for (int i = 0; i < Stages.size(); i++)
 		{
@@ -91,12 +90,11 @@ bool Incubator::Incubation()
 			double timeToFlips = GetTickCount();
 			double timeToVentilations = GetTickCount();
 
-			cout << "==========================================================================" << endl;
+			cout << "====================================================================" << endl;
 			while (CurrentStage.get_TimeStageOfMilliSec() >= (CurrentTime - TimeStart))
 			{
 				if (CurrentSensors->MinTemperature() < CurrentStage.get_MinTemerature())
 				{
-					cout << endl;
 					cout << " Минимальная текущая температура = " << to_string(CurrentSensors->MinTemperature()) 
 						<< " ниже допустимой = " << to_string(CurrentStage.get_MinTemerature()) << endl;
 
@@ -111,7 +109,6 @@ bool Incubator::Incubation()
 
 				if (CurrentSensors->MinHummidity() < CurrentStage.get_MinHumidity())
 				{
-					cout << endl;
 					cout << " Минимальная текущая Влажность = " << to_string(CurrentSensors->MinHummidity())
 						<< " ниже допустимой = " << to_string(CurrentStage.get_MinHumidity()) << endl;
 
@@ -128,7 +125,6 @@ bool Incubator::Incubation()
 				CurrentTime = GetTickCount();
 				if (int (CurrentTime - timeToVentilations) > CoeffVentilations)
 				{
-					cout << endl;
 					timeToVentilations = CurrentTime;
 					cout << "Пора провентилировать!" << endl;
 					CurrentVentilation->VentilationOn();
@@ -140,7 +136,6 @@ bool Incubator::Incubation()
 				CurrentTime = GetTickCount();
 				if (int(CurrentTime - timeToFlips) > CoeffFlips)
 				{
-					cout << endl;
 					timeToFlips = CurrentTime;
 					cout << "Пора перевернуть яйца!" << endl;
 					CurrentFlipper->FlipperOn();
@@ -150,23 +145,18 @@ bool Incubator::Incubation()
 
 				// Эмитация потерь инкубатора
 				CurrentSensors->Poteri();
-				cout << endl;
 				cout << "Произошли естественные потери Температуры и Влажности!" << endl;
 				cout << "______________________________________________________" << endl;
-				cout << endl;
 
 				//CurrentTime = omp_get_wtime();
 				CurrentTime = GetTickCount();
 			}
-			cout << "==========================================================================" << endl;
+			cout << "====================================================================" << endl;
 			cout << endl;
 			cout << endl;
 		}
 		
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
+
 		cout << "**********************************************************" << endl;
 		cout << "Инкубация яиц типа " << CurrentEggType->GetName() << " успешно завершена!" << endl;
 		cout << "**********************************************************" << endl;
