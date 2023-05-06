@@ -3,11 +3,12 @@
 Incubator::Incubator()
 {
 	CurrentEggType = new EggType();
-	CurrentFlipper = new Flipper();
-	CurrentVentilation = new Ventilation();
+	//CurrentFlipper = new Flipper();
+	//CurrentVentilation = new Ventilation();
 	CurrentHumidifier = new Humidifier();
 	CurrentHeater = new Heater();
 	CurrentSensors = new Sensors();
+	CuurentContext = new Context(new Flipper());
 }
 
 Incubator::Incubator(EggType* eggType, Flipper* flipper,
@@ -121,16 +122,6 @@ bool Incubator::Incubation()
 					cout << endl;
 				}
 
-				//CurrentTime = omp_get_wtime();
-				CurrentTime = GetTickCount();
-				if (int (CurrentTime - timeToVentilations) > CoeffVentilations)
-				{
-					timeToVentilations = CurrentTime;
-					cout << "Пора провентилировать!" << endl;
-					CurrentVentilation->VentilationOn();
-					cout << "Вентиляция закончена!" << endl;
-					cout << endl;
-				}
 
 				//CurrentTime = omp_get_wtime();
 				CurrentTime = GetTickCount();
@@ -138,10 +129,25 @@ bool Incubator::Incubation()
 				{
 					timeToFlips = CurrentTime;
 					cout << "Пора перевернуть яйца!" << endl;
-					CurrentFlipper->FlipperOn();
+					//CurrentFlipper->FlipperOn();
+					CuurentContext->execute();
 					cout << "Яйца перевернуты!" << endl;
 					cout << endl;
 				}
+
+				//CurrentTime = omp_get_wtime();
+				CurrentTime = GetTickCount();
+				if (int (CurrentTime - timeToVentilations) > CoeffVentilations)
+				{
+					timeToVentilations = CurrentTime;
+					cout << "Пора провентилировать!" << endl;
+					//CurrentVentilation->VentilationOn();
+					CuurentContext->execute();
+					cout << "Вентиляция закончена!" << endl;
+					cout << endl;
+				}
+
+
 
 				// Эмитация потерь инкубатора
 				CurrentSensors->Poteri();

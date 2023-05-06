@@ -18,6 +18,8 @@ private:
 
 	Sensors *CurrentSensors;
 
+	Context* CuurentContext;
+
 public:
 
 	Incubator();
@@ -29,6 +31,16 @@ public:
 	void SetIncubator(EggType* eggType, Flipper* flipper,
 		Ventilation* ventilation, Humidifier* humidifier,
 		Heater* heater, Sensors* sensors);
+
+	void SetIncubator(EggType* eggType, Context* context, Humidifier* humidifier,
+		Heater* heater, Sensors* sensors)
+	{
+		CurrentEggType = eggType;
+		CurrentHumidifier = humidifier;
+		CurrentHeater = heater;
+		CurrentSensors = sensors;
+		CuurentContext = context;
+	}
 
 	// Инкубирование
 	bool Incubation();

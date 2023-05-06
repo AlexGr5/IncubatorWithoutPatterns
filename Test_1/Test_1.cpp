@@ -52,10 +52,18 @@ int main()
     EgT1->AppendStage(St1);
     EgT1->AppendStage(St2);
 
+
+    //Context* context;
+    //context->setState(new Flipper());
+
+    Context* sc = new Context(new Flipper());
+
     Incubator Incub1;
 
-    Incub1.SetIncubator(EgT1, F1, V1, Humidefier1, Heater1, S1);
+    Incub1.SetIncubator(EgT1, sc, Humidefier1, Heater1, S1);
 
     Incub1.Incubation();
+
+    delete sc;
 }
 
