@@ -51,6 +51,9 @@ bool Incubator::Incubation()
 
 	Stage CurrentStage = Stage();
 
+	CurrentEggType->EmitateWork();
+	cout << endl;
+
 	if (Stages.size() > 0)
 	{
 
