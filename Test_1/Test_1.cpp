@@ -48,9 +48,13 @@ int main()
     St1.SetStage(15000, 3, 3, 35.1, 36.1, 40, 50);
     St2.SetStage(15000, 3, 3, 36.0, 37.0, 50, 80);
 
-    EggType* EgT1 = new EggType("Куриные");
+    EggType* EgT1 = EggType::Instance("Куриные");
     EgT1->AppendStage(St1);
     EgT1->AppendStage(St2);
+
+    EggType* EgT2 = EggType::Instance("Перепелиные");
+
+    cout << "\n\n" << endl;
 
     Incubator Incub1;
 

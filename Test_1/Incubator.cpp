@@ -2,7 +2,7 @@
 
 Incubator::Incubator()
 {
-	CurrentEggType = new EggType();
+	CurrentEggType = EggType::Instance();
 	CurrentFlipper = new Flipper();
 	CurrentVentilation = new Ventilation();
 	CurrentHumidifier = new Humidifier();

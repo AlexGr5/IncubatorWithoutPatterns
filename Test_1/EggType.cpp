@@ -1,5 +1,28 @@
 #include "EggType.h"
 
+
+EggType* EggType::instance = NULL;
+
+
+EggType* EggType::Instance(string Name) {
+	if (instance == 0) {
+		cout << "new object, type = " << Name << endl ;
+		instance = new EggType(Name);
+	}
+	else cout << "object already exists! New = " << Name << " not set!" << endl;
+	return instance;
+}
+
+EggType* EggType::Instance() {
+	if (instance == 0) {
+		cout << "new object \n";
+		instance = new EggType();
+	}
+	else cout << "object already exists!\n";
+	return instance;
+}
+
+
 EggType::EggType()
 {
 	NameOfType = "";

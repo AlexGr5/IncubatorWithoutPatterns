@@ -5,6 +5,14 @@ class EggType : public InterfaceEggType
 {
 private:
 
+	static EggType* instance;
+
+
+protected:
+	EggType();
+
+	EggType(string Name);
+
 	// Набор стадий инкубирования
 	vector <Stage> KitStages;
 
@@ -16,9 +24,8 @@ private:
 
 public:
 
-	EggType();
-
-	EggType(string Name);
+	static EggType* Instance(string Name);
+	static EggType* Instance();
 
 	// Установить набор стадий
 	void SetKitStages(vector <Stage> kitStages);
