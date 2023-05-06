@@ -126,9 +126,12 @@ bool Incubator::Incubation()
 				if (int (CurrentTime - timeToVentilations) > CoeffVentilations)
 				{
 					timeToVentilations = CurrentTime;
+					cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 					cout << "Пора провентилировать!" << endl;
 					CurrentVentilation->VentilationOn();
+					CurrentVentilation->setState(CurrentVentilation->getState() + 10);
 					cout << "Вентиляция закончена!" << endl;
+					cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 					cout << endl;
 				}
 

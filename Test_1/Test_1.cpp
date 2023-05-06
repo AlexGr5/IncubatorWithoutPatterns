@@ -52,9 +52,17 @@ int main()
     EgT1->AppendStage(St1);
     EgT1->AppendStage(St2);
 
+
+
+    Observer* obs = new IncubatorVisor();
+    Ventilation* ventel1 = new Ventilation(35);
+    ventel1->attach(obs);
+    //ventel1->setState(ventel1->getState() + 10);
+
+
     Incubator Incub1;
 
-    Incub1.SetIncubator(EgT1, F1, V1, Humidefier1, Heater1, S1);
+    Incub1.SetIncubator(EgT1, F1, ventel1, Humidefier1, Heater1, S1);
 
     Incub1.Incubation();
 }
