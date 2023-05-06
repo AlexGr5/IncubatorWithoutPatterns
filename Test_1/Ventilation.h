@@ -10,4 +10,3 @@ public:
 	// Проветрить
 	bool VentilationOn();
 };
-
