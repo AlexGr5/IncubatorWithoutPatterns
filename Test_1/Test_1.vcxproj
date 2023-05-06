@@ -153,6 +153,7 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TemperatureSensorC0.cpp" />
     <ClCompile Include="Test_1.cpp" />
+    <ClCompile Include="VentBuilder.cpp" />
     <ClCompile Include="Ventilation.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +170,7 @@
     <ClInclude Include="Sensors.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="TemperatureSensorC0.h" />
+    <ClInclude Include="VentBuilder.h" />
     <ClInclude Include="Ventilation.h" />
   </ItemGroup>
   <ItemGroup>

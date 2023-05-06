@@ -52,9 +52,18 @@ int main()
     EgT1->AppendStage(St1);
     EgT1->AppendStage(St2);
 
+    //===================================================
+    Director director;
+
+    BuildVentIn ventIn;
+    director.SetVentelBuilder(&ventIn);
+    director.ConstructVentel();
+    Ventilation* ventelation = director.GetVentel();
+    //===================================================
+
     Incubator Incub1;
 
-    Incub1.SetIncubator(EgT1, F1, V1, Humidefier1, Heater1, S1);
+    Incub1.SetIncubator(EgT1, F1, ventelation, Humidefier1, Heater1, S1);
 
     Incub1.Incubation();
 }

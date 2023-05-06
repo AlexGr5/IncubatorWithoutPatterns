@@ -47,6 +47,17 @@ std::wstring LargeIntToString(const LARGE_INTEGER& li)
 // Инкубирование
 bool Incubator::Incubation()
 {
+
+	//===================================================
+	Director director;
+
+	BuildVentOut ventOut;
+	director.SetVentelBuilder(&ventOut);
+	director.ConstructVentel();
+	Ventilation* ventelation = director.GetVentel();
+	//===================================================
+
+
 	vector <Stage> Stages = CurrentEggType->GetStages();
 
 	Stage CurrentStage = Stage();
@@ -127,7 +138,10 @@ bool Incubator::Incubation()
 				{
 					timeToVentilations = CurrentTime;
 					cout << "Пора провентилировать!" << endl;
+					cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 					CurrentVentilation->VentilationOn();
+					ventelation->VentilationOn();
+					cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 					cout << "Вентиляция закончена!" << endl;
 					cout << endl;
 				}
