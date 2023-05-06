@@ -36,7 +36,6 @@ int main()
     Humidefier1->AddSensor(H4);
     Humidefier1->AddSensor(H5);
 
-    Ventilation* V1 = new Ventilation();
     Flipper* F1 = new Flipper();
 
     Sensors* S1 = new Sensors();
@@ -51,6 +50,15 @@ int main()
     EggType* EgT1 = new EggType("Куриные");
     EgT1->AppendStage(St1);
     EgT1->AppendStage(St2);
+
+
+    VentPool pool;
+    Ventilation* object = pool.Take();
+    Ventilation* V1 = pool.Take();
+    pool.Down(object);
+    Ventilation* object2 = pool.Take();
+    
+    cout << endl << endl;
 
     Incubator Incub1;
 
